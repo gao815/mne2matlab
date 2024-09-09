@@ -64,8 +64,8 @@ def compute_and_save_fiducial_points(niiFiles, subject, subjects_dir):
     vox2ras = img.affine
 
     # 定义转换矩阵
-    transform_matrix = np.linalg.pinv(np.array([[-1,0,0,128],[0,0,1,-128],[0,-1,0,128],[0,0,0,1]]))
-    # transform_matrix = np.linalg.pinv(vox2ras)
+    # transform_matrix = np.linalg.pinv(np.array([[-1,0,0,128],[0,0,1,-128],[0,-1,0,128],[0,0,0,1]]))
+    transform_matrix = np.linalg.pinv(vox2ras)
 
     # 标准转个体
     Z_MNI = transform_matrix @  np.concatenate([np.array(max_z_point),np.ones(1)]).T
